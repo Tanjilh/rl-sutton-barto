@@ -1,0 +1,4 @@
+My work through of the Sutton and Barto Reinforcement Learning:
+An Introduction Book.
+
+Just includes raw work throughs of my novice coding abilities and how i update and try make the code better.

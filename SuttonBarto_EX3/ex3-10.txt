@@ -1,0 +1,32 @@
+Exercise 3.10 In the gridworld example, rewards are positive for goals,
+negative for running into the edge of the world, and zero the rest of the time.
+Are the signs of these rewards important, or only the intervals between them?
+Prove, using (3.2), that adding a constant c to all the rewards adds a constant,
+vc, to the values of all states, and thus does not affect the relative values of
+any states under any policies. What is vc in terms of c and γ?
+
+it seems to be that the signs and intervals between them are just as important. the
+sign of each reward determines if the agent is following its design, it should aim to
+maximise the reward function hence trying to minimise negative actions and exploit largely
+positive ones. from the reward function G_t it shows that through discounting the later
+rewards are valued less, so the interval between getting a different signed reward back to 
+back can influence G_t more significantly than if there was a large interval between them with
+their being a smaller change and a stronger bias towards the earlier reward.
+
+
+Gt = R_t+1 + γR_t+2 + γ^2R_t+3 + · · ·
+
+G't = (R_t+1 + c) + γ(R_t+2 + c) + γ^2(R_t+3 + c) + · · ·
+
+   = sum_to_inf(γ^k * R_t+k+1) + sum_to_inf(γ^k * c) 
+   = G_t + c/1-γ (geometric infinite sum)
+
+this is viable as we only use γ = 1 in episodic scenarios where the agent reaches
+a terminal state and the sum is finite so convergence is not needed. since this is 
+a continuing task 0 <= γ < 1
+
+(based on feedback)
+
+convey that a constant shift in all rewards will uniformly increase the total by
+a fixed amount c/1-γ. hence the relative distance between states are unchanged meaning
+the policy remains unaffected for optimality 

@@ -1,0 +1,37 @@
+Exercise 3.16 Give the Bellman equation for q∗ for the recycling robot.
+
+optimal policy would entail : searching when battery states are high, then waiting 
+for any extra recycleables when low, before recharging when low to then repeat...
+
+assumimg we start in a high state and actions are deterministic ==> p(s',r | s, a) = 1
+
+q*π(s,a) = sum_s'(sum_r(p(s',r | s, a)*[R_t+1 + y * max_a'(q*(s', a'))]))
+
+where s = h ,  a = search ==> s' = l , a = wait , ==> s'' = l , a = recharge
+
+then repeating the cycle in a continuing model.
+
+answer (based on feedback)
+
+we’re not evaluating a specific path like H → L → recharge, but rather computing the expected 
+maximum return over all possible next actions from 𝑠′.
+
+h stays in h with probability x and goes to L with probability 1-x
+
+so
+q*π(s,a) = sum_s'(sum_r(p(s',r | s, a)*[R_t+1 + y * max_a'(q*(s', a'))]))
+
+q*π(h,search) = x * [R_search + y*max_a'(q*(H, a'))] + (1-x) * [R_search + y *max_a'(q*(L, a'))]
+
+waiting leaves the state deterministic.
+
+q*π(h,wait) = R_wait + y*max_a'(q*(H, a')) 
+
+lets say the chance of failure in a L state is 1-k and succeeds with probability k
+
+q*π(L,search) = k * [R_success + y*max_a'(q*(L, a'))] + (1-k) * [R_fail + y*max_a'(q*(L, a'))]
+
+q*π(L,wait) = R_wait + y*max_a'(q*(L, a'))
+
+q*π(L,recharge) = R_recharge + y*max_a'(q*(H, a'))
+

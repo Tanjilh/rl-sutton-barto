@@ -1,0 +1,19 @@
+Exercise 3.17 Figure 3.8 gives the optimal value of the best state of the
+gridworld as 24.4, to one decimal place. Use your knowledge of the optimal
+policy and (3.2) to express this value symbolically, and then to compute it to
+three decimal places.
+
+V*π(S) = sum_a(π(s | a) * sum_s'(sum_r(p(s',r | s, a)*[R_t+1 + y * V*π(s')])))
+
+since we are following the optimal polciy we assume p(s',r | s, a) = 1 since actions
+are deterministic.
+
+so V*π(S) = R_t+1 + y * V*π(s')
+
+assume discount factor is 0.9
+
+V*π(A) = 10 + 0.9 * V*π(s')
+       = 10 + 0.9 * (0 + 0.9(0+0.9(0+0.9(0+ 0.9 *V*π(A)))))
+       = 10 + 0.9^5 * V*π(A)
+       = 10 / (1 - 0.9^5)
+       =24.419 (to 3 d.p.)

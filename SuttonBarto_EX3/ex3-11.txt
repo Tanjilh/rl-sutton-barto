@@ -1,0 +1,50 @@
+Exercise 3.11 Now consider adding a constant c to all the rewards in an
+episodic task, such as maze running. Would this have any effect, or would it
+leave the task unchanged as in the continuing task above? Why or why not?
+Give an example.
+
+an episodic task would be modelled with γ = 1 and the reward function would be finite
+as the agent would terminate 
+
+Gt = R_t+1 + γR_t+2 + γ^2R_t+3 + · · ·
+
+so the reward function would have no discounting and would consist of only its rewards
+
+G't = (R_t+1 + c) + (R_t+2 + c) + (R_t+3 + c) + · · ·
+    = Gt = R_t+1 + R_t+2 + R_t+3 + · · · + R_t+k + C * k
+
+depending on each length of the episode adding a constant may change the outcome of the
+task as the added constant is not fixed.
+
+(based on feedback)
+
+- state we are assuming γ = 1 as and episodic task may also take on γ < 1
+to prioritise shorter episodes
+
+- crucial aspect to highlight relative return between policies are affected
+by adding constant when episode lengths differ
+
+even if the task stays the same in structure, the agent may prefer longer episodes
+since they accumalate more constant reward.
+
+example...
+
+since G't = sum_0_to_T-t-1(R_t+k+1 + c) = G_t + c(T-t)
+
+where T-t depends on the length of the episode.
+
+lets say 
+policy A terminates in 3 steps with rewards [0,0,1]
+policy B terminates in 6 steps with rewards [0,0,0,0,0,1]
+
+G_A = G_B = 1
+
+however lets say c = +1
+
+G'_A = 4 =/= 7 = G'_B
+
+policy B is now favoured in cumilative reward even though it is now slower.
+
+
+
+

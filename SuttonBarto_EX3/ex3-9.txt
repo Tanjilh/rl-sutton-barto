@@ -1,0 +1,13 @@
+Exercise 3.9 The Bellman equation (3.12) must hold for each state for the
+value function vπ shown in Figure 3.5b. As an example, show numerically that
+this equation holds for the center state, valued at +0.7, with respect to its four
+neighboring states, valued at +2.3, +0.4, −0.4, and +0.7. (These numbers are
+accurate only to one decimal place.)
+
+the bellman equation states:
+
+V(s) = sum_a(policy(a,s)) * sum_(s',r)(p(s',r | s, a)[r + y*V(s')])
+
+0.7 = 0.25 * 1*(0+0.9*(2.3+0.4-0.4+0.7))
+    = 0.675
+    = 0.7 (1 d.p.)

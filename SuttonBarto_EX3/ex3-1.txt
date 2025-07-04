@@ -1,0 +1,109 @@
+exercise 3.1. Devise three example tasks of your own that fit into the reinforcement 
+learning framework, identifying for each its states, actions, and rewards. 
+Make the three examples as different from each other as possible.
+The framework is abstract and flexible and can be applied in many different
+ways. Stretch its limits in some way in at least one of your examples.
+
+task 1:
+
+trading reinforcement learning model:
+goal would be to make profit on trades with the actions of buying & selling.
+we observe the states as the current market price.
+our model would be rewarded for making profits with each trade.
+
+task 1 (based on feedback):
+
+more meaningful state spaces to make predictions i.e.
+State = [current_price, recent_price_trend, RSI, moving_avg, volume]
+This gives the agent temporal and contextual awareness.
+
+for action space distinguish by how much.
+Actions: a ∈ [-1, 1] where -1 = sell max, +1 = buy max.
+this is a continuous action space
+
+vs a discrete action space
+Actions: {Buy, Sell, Hold}
+
+numeric value for the reward function
+Reward = portfolio_value(t+1) - portfolio_value(t)
+
+
+task 2:
+
+poker reinforcement learning model:
+we would create a model where the goal is to maximise profits on each hand,
+possibly learn based on player data on when someone bluffs vs how strong your
+hand is.
+
+the state space may include: [current_hand_strength, pot_value, bet_value, reserve_chips, opponents_chips, bluffing_chance, win_bluff_chance]
+
+action space may include = [call, raise, fold] where any raise value can be ∈ [0, 1] denoting the 
+proportion of your current chips you may want to raise by
+
+reward function
+Reward = total_chips(t+1) - total_chips(t)
+
+task 2 (based on feedback):
+
+1.think about how bluffing chances are estimated. like through bayesian updating using 
+the players history
+
+this metric is possibly also not observable and will most likely be learned through
+exploration
+
+consider using these as learned values, unless using pretrained models as opponents.
+
+2.maybe consider adding these metrics to the state space:
+starting_positon(small blind/ big blind/ early / late)
+community_cards (for texas holdem)
+number_of_players (remaining players)
+
+3. denote poker is a partially stochatstic and observable game.
+players nature are non-determenistic and the cards are hidden
+
+it should be denoted that we are dealing with a Partially Observable Markov Decision
+Process
+
+- Opponent modeling and incorporating concepts like bluffing is an excellent stretch of RL 
+- this nudges into multi-agent RL or imitation learning territory.
+
+
+task 3:
+food sales robot rl model
+goal of this robot will be to manage resources and time in order to satisfy every
+customers order based on the line of the queue looking to potentially maximise long 
+term sales profit, inefficiency will equate to unhappy customers potentially losing a 
+bonus tip or the customer itself. each order may take a varying amount of time to make.
+
+state space may include: [order_making_time ,order_value, number_of_people_in_queue,
+customer_time_waited, tip_value, tip_likelihood, customer_frequency, ingredient_stock, available_cookers,
+available_drink_dispenser, (any other available machines), distance_to_machines,
+robot_current_location]
+
+tip_value and tip_likelihood, customer_frequency may be considered learned values
+through exploration rather than observed, it may be estimated through bayesian updating.
+these can be used as observed states if using pre trained models - i.e. like customers
+in the game overcooked.
+
+reward value: current_profit(t+1) - current_profit(t)
+
+in the game overcooked where there is a penalty for not serving a customer the objective
+may also include to try serve every customer penalising for missing one.
+
+task 3 (based on feedback):
+
+consider a multi objective trade-off:
+Reward = α × (profit gain) - β × (customers lost)
+
+possibility of hierachial RL where a manager deicdes the goal to either 
+maximise thorughput or maximise profits. a worker then aims to complete this
+
+define task type:
+This is a continuous, partially observable, stochastic, resource-constrained, real-time environment.
+
+a hybrid RL/planning agent (e.g., with embedded scheduling algorithms) could be optimal.
+
+define a time step more clearly i.e.
+A timestep = 1 second, during which the robot can only move/serve/etc.
+
+

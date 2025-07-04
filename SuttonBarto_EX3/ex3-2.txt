@@ -1,0 +1,28 @@
+Exercise 3.2 Is the reinforcement learning framework adequate to usefully
+represent all goal-directed learning tasks? Can you think of any clear exceptions?
+
+maybe in something that is computationally expensive ? 
+
+answer (based on feedback)
+
+generally speaking rl tasks may just not be optimal based on the situation.
+
+rl often requires millions of interactions with an enviroment to learn effectively
+for real world systems like in health-care rl methods can be slow, expensive or
+dangerous
+
+some enviroments are hard to simulate accurately - wihtout running many simulated episodes
+rl becomes impractical.
+
+in high cost or saftey enviroments supervised learning models or expert systems are
+might be more practical
+
+other cases where rl is not viable:
+
+1. when there is no feedback as rl requires a defined reward, artistic or philosophical
+tasks may have no reward as it can be vague or subjective.
+
+2. tasks with one shot or high stakes there isnt room for trial and error.
+
+3.in an enviroment with perfect training data (input = correct output), supervised
+learning is more effective and efficient instead of delayed reward via RL

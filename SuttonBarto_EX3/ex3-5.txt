@@ -1,0 +1,36 @@
+Exercise 3.5 Imagine that you are designing a robot to run a maze. You decide to 
+give it a reward of +1 for escaping from the maze and a reward of zero
+at all other times. The task seems to break down naturally into episodes—the
+successive runs through the maze—so you decide to treat it as an episodic task,
+where the goal is to maximize expected total reward (3.1). After running the
+learning agent for a while, you find that it is showing no improvement in escaping 
+from the maze. What is going wrong? Have you effectively communicated
+to the agent what you want it to achieve?
+
+i think with this method since its episodic and after each episode (the robot escapes)
+it will be rewarded with +1 reward, i believe since the goal is to maximise total expected
+reward once the agent finds one route it will exploit it to just get higher reward instead
+of improvement in escape times or method.
+
+answer (based on feedback)
+
+the key point isnt just exploitation but the reward designing
+
+the reward design doesnt really reflect what you want the agent to learn
+
+we want
+-faster escapes
+-more efficient routes
+
+essentially there is no incentive
+
+we can say the reward function is too sparse
+
+we could improve this by implementing small amounts of negative reward for 
+taking too long
+
+or rewarding more for finding shorter paths.
+
+- essentially the agent is acting just as its been designed so we expect no improvement
+
+ 

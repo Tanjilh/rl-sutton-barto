@@ -1,0 +1,43 @@
+Exercise 3.14 Draw or describe the optimal state-value function for the golf
+example
+
+the optimal state value function consists of the probability of 
+selecting the max action from the tee, the driver, multiplied by
+the initial reward followed by some discount value multiplied by
+the optimal next action, in this case the driver again, iteratovely 
+continuing this process until the episode terminates which would
+be to finally use the putter to reach the hole.
+
+(based on feedback)
+
+optimal state value function is defined by:
+
+V*(s) = max_a(sum_s'(sum_r(p(s',r|s,a)[r+yV*(s')])))
+
+possible choices of actions are driver or putter, depending on the position
+of the balls state we want to pick action accordingly to get to the hole
+in the least possible amount of steps
+
+V*(s) is higher the closer it is to finishing, the longer you take to terminate
+the lower the score becomes due to the negative reward of being anywhere other than the 
+hole.
+
+the reward function G_t = -1 -y -y^2 -... - Y^n-1
+
+where n is the amount of swings it takes to get to the hole
+
+so assuming the enviroment is deterministic for simplicity p(s′,r∣s,a)=1
+
+V*(s) = -1 -y -y^2 -... - Y^n-1
+      = -(1-y^n)/(1-y) [using geometric series]
+
+and if y = 1 (undiscounted)
+
+V*(s) = -n
+
+this is because we consider the task episodic in this case and consider
+each swing as reward of -1 so n is just the amount of swings it takes
+to terminate the episode.
+
+
+

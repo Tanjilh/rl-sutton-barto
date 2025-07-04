@@ -1,0 +1,26 @@
+Exercise 3.8 What is the Bellman equation for action values, that is, for qπ?
+It must give the action value qπ(s, a) in terms of the action values, qπ(s', a'),
+of possible successors to the state–action pair (s, a). As a hint, the backup
+diagram corresponding to this equation is given in Figure 3.4b. Show the
+sequence of equations analogous to (3.12), but for action values.
+
+following from the bellman equation of value function under the policy for state s:
+
+V(s) = sum_a(policy(a,s)) * sum_(s',r)(p(s',r | s, a)[r + y*V(s')])
+
+mimicing this process we want to find
+
+qπ(s, a) = Exp_π(G_t | S_t = s , A_t = a)
+         = Exp_π(R_t+1 + Y * G_t+1| S_t = s , A_t = a)
+         = Exp_π(R_t+1| S_t = s , A_t = a) + Exp_π(Y * G_t+1| S_t = s , A_t = a)
+         = sum_s'(sum_r(p(s',r | s, a)[r])) + sum_s'(sum_r(Exp_π(Y * G_t+1| S_t = s')))
+         = sum_s'(sum_r(p(s',r | s, a)[r + Exp_π(Y * G_t+1| S_t = s')]))
+         = sum_s'(sum_r(p(s',r | s, a)[r + y* sum_a'(π(a'|s') * qπ(s', a'))])) 
+
+
+the sequence of equations denotes that when starting from state s and taking action a 
+--> we arrive at state s' with reward r with probability p(s′,r∣s,a) and following the 
+policy π we take action a' with probability π(a∣s') and return action value qπ(s', a')
+
+
+

@@ -1,0 +1,40 @@
+Exercise 3.4 Suppose you treated pole-balancing as an episodic task but
+also used discounting, with all rewards zero except for −1 upon failure. What
+then would the return be at each time? How does this return differ from that
+in the discounted, continuing formulation of this task?
+
+
+the reward would  be -1 at each time step, in a discounted reward function the later 
+rewards would be values less so it would -1 multiplied by some factor alpha between
+0 and 1 to the power of the corresponding time step.
+
+answer (based on feedback)
+
+so the difference between episodic and continuing lies within the reward formulation.
+
+episodic has a definite ending meaning:
+
+G(t) = R_1 + a*R_2 + a^2 * R_3 + a^3 * R_4 + ...
+
+*earlier stages have a larger magnitude meaning they are penalized more
+
+
+continuing has a infinitely going series of events:
+
+in this case the episode never ends...
+essentially meaning the agent continually gets 0 reward 
+in these cases often in practice a small reward is given for staying on task
+rather than punishing for ending or failing the episode
+
+if we used the approach:
+
+G(t) = -a^k with no reset 
+     = SUM_to_INF(a^k * R_t+k) 
+
+     once the agent fails it carries into the reward infinitely essentially never being
+     able to recover, gradually getting smaller with discounting as k time steps progress
+
+    this may make it harder for the agent to learn.
+
+    
+

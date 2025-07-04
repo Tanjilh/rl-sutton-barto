@@ -1,0 +1,12 @@
+Exercise 3.19 Give a definition of q∗ in terms of v∗.
+
+qπ(s,a) = sum_s'(sum_r(p(s',r| s, a) * [R_t+1 + y * sum_a'(π(s',a')*qπ(s',a'))]))
+
+for optimal cases
+
+q*(s,a) = sum_s'(sum_r(p(s',r| s, a) * [R_t+1 + y*max_a'(q*(s',a'))]))
+
+by definition v*(s') = max_a'(q*(s',a'))
+
+so
+q*(s,a) = sum_s'(sum_r(p(s',r| s, a) * [R_t+1 + y*v*(s')]))

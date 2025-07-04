@@ -1,0 +1,17 @@
+Exercise 3.21 Give a definition of π∗ in terms of v∗.
+
+we know that
+
+π*(a|s) = softmax(q*(s,a))
+or
+π*(a|s) = argmax_a(q*(s,a))
+
+and that
+q*(s,a) = sum_s'(sum_r(p(s',r| s, a) * [R_t+1 + y*v*(s')]))
+
+so 
+π*(a|s) = softmax(sum_s'(sum_r(p(s',r| s, a) * [R_t+1 + y*v*(s')])))
+
+or
+
+π*(a|s) = argmax_a(sum_s'(sum_r(p(s',r| s, a) * [R_t+1 + y*v*(s')])))

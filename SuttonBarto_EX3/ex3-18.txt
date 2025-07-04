@@ -1,0 +1,24 @@
+Exercise 3.18 Give a definition of v∗ in terms of q∗.
+
+V*(s) =  sum_s'(sum_r(p(s',r | s, a)*[R_t+1 + y * V*π(s')]))
+
+since we are deterministically choosing the max action policy
+by definition optimal state value function is the optimal state action function.
+
+V*(s) = max_a(q*(s,a))
+
+the bellman optimality equation
+
+q*(s,a) = Exp(R_t+1 + Y * V*(S_t+1) | S_t = s ,A_t = a)
+        = sum_s'(sum_r(p(s',r | s, a)*[R_t+1 + y * V*π(s')]))
+
+
+intuition:
+
+Vπ(S) = sum_a(π(s|a) * qπ(s,a))
+
+action value is like asking how will my quality of life be given i 
+go to a certain city (state) with this job (action)
+
+state value is like asking how good will my quality of life be given
+i am at this city (state)

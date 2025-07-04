@@ -1,0 +1,40 @@
+Exercise 3.6: Broken Vision System Imagine that you are a vision
+system. When you are first turned on for the day, an image floods into your
+camera. You can see lots of things, but not all things. You can’t see objects
+that are occluded, and of course you can’t see objects that are behind you.
+After seeing that first scene, do you have access to the Markov state of the
+environment? Suppose your camera was broken that day and you received no images 
+at all, all day. Would you have access to the Markov state then?
+
+a markovian state would imply that all future states are only dependant on the previous
+time step state. in this case since we have an accesible state we would have access to the
+next markovian state enviroment.
+
+in the case where the camera is broken since we do not have access to the current day,
+assuming the camera was working before we can access higher order markovian state enviroments
+
+answer (based on feedback)
+
+understand what a markovian state implies:
+A Markov state is a representation that contains all the information necessary to predict future 
+dynamics and rewards
+
+P(sₜ₊₁ | sₜ, aₜ) = P(sₜ₊₁ | s₀, a₀, ..., sₜ, aₜ)
+
+this means the current state alone is enough to capture the whole enviroment
+
+in our scenario the state actually not truly markovian as many aspects of the enviroment
+are hidden or not available through our current state
+
+-The image may be partial: some objects are hidden, occluded, or behind you.
+-You don’t see the full environment state, so you can’t fully predict what will happen next 
+just from the current image.
+
+so we dont have acesss to the markov state as the observation is partial
+(unless augmented with memory via RNN or belief state)
+
+if the camera is broken we are blind in the current state so we have even less access
+to a markov state due to uncertainty
+
+even with prior belief we cant formulate a belief on whats currently happening
+

@@ -1,0 +1,33 @@
+Exercise 3.3 Consider the problem of driving. You could define the actions
+in terms of the accelerator, steering wheel, and brake, that is, where your
+body meets the machine. Or you could define them farther out—say, where
+the rubber meets the road, considering your actions to be tire torques. Or
+you could define them farther in—say, where your brain meets your body, the
+actions being muscle twitches to control your limbs. Or you could go to a
+really high level and say that your actions are your choices of where to drive.
+What is the right level, the right place to draw the line between agent and
+environment? On what basis is one location of the line to be preferred over
+another? Is there any fundamental reason for preferring one location over
+another, or is it a free choice?
+
+
+i think it can be free of choice but generally speaking we should consider at what point
+is it easiest to observe these features, is it realistic to monitor muscle twitches while
+someones driving, or is it easier to just monitor the accelerator, steering wheel and brake
+as ultimately i believe that all these things are unified in their response to what will
+happen on the road. for example the muscle twitch will influence directly what happens to
+the steering wheel or break at a higher level but ultimately it has to go through the chain
+of events such to actually move wheel or push down the accelerator to influence the car, hence
+it seems unnecessary to observe at such a high level.
+
+response (based on feedback)
+
+frame the reasoning as a bias-variance trade-off:
+i.e 
+lower level actions (muscle twitches) - will be more in depth but harder to model or control
+
+higher level actions (driving to a store) - is more easier to specify but stray away too much
+to be directly actionable
+
+outline that the purpose of modelling is to make learning or planning more feasible
+

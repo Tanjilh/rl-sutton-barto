@@ -1,0 +1,21 @@
+Exercise 3.20 Give a definition of π∗ in terms of q∗.
+
+
+policy interms of q(s,a)
+
+in greedy terms the model is deterministic 
+
+π(a|s) = argmax_a(q(s,a))
+
+or interms of a stochastic model:
+
+π(a|s) = softmax(q(s,a))
+
+so for the optimal policy
+
+π*(a|s) = argmax_a(q*(s,a))
+
+in a stochastic model with multiple optimal actions
+
+π*(a|s) = softmax(q*(s,a))
+
